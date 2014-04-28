@@ -1,10 +1,10 @@
 ﻿(function(angular){
 
     angular.module('app')
-        .controller('MenuCtrl', ['$scope', '$players',
-            function($scope, $players){
+        .controller('MenuCtrl', ['$scope', '$game',
+            function($scope, $game){
                 $scope.username='';
-                $scope.players = $players;
+                $scope.players = $game.players;
                 $scope.player={
                     online: false,
                     highscore:0

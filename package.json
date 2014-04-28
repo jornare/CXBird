@@ -1,0 +1,19 @@
+﻿{
+  "name": "CXBird",
+  "version": "0.0.1",
+  "description": "CXBird",
+  "main": "app.js",
+  "author": {
+    "name": "Jørn Are Hatlelid",
+    "email": "jah@computas.com"
+  },
+  "scripts": {
+	"start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.4",
+    "jade": "*",
+    "stylus": "*",
+    "socket.io": "*"
+  }
+}

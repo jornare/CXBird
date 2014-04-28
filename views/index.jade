@@ -1,0 +1,19 @@
+doctype html
+html(ng-app='app')
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		block javascript
+			script('src'= '/socket.io/socket.io.js')
+			script('src'= '/lib/angular.js')
+			script('src'= '/lib/angular-route.js')
+			script('src'= '/app/app.js')
+			script('src'= '/app/services/socketService.js')
+			script('src'= '/app/services/gameService.js')
+			script('src'= '/app/controllers/menuCtrl.js')
+			script('src'= '/app/controllers/playerCtrl.js')
+			script('src'= '/app/controllers/highscoresCtrl.js')
+			script('src'= '/app/controllers/gameCtrl.js')
+			script('src'= '/app/directives/cxbirdDirective.js')
+	body
+		div(ng-view)

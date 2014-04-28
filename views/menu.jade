@@ -1,0 +1,15 @@
+h1= title
+p Welcome to CXBird{{username?' ' + username:''}}!
+div(ng-hide='player.online')
+	p Please give your username or Twitter handle to play
+	input(ng-model='username')
+p(ng-show='player.online') Your highscore: {{player.highscore}}
+ul
+	li(ng-show='player.online')
+		a(ng-href='#/player') Play!
+	li
+		a(ng-href='#/highscores') Highscores
+	li
+		a(ng-href='#/game')	Current game
+div Online players: {{players.online}}
+div Total players: {{players.count}}

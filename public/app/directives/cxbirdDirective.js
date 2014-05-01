@@ -6,11 +6,6 @@
         this.y=0;
     }
 
-    CXPlayer.prototype.render = function(ctx){
-        ctx.fillRect(p.x+100,100-p.y,20,20);
-    }
-
-
     function CXBird(ctx, game){
         this.ctx=ctx;
         this.width = ctx.canvas.width;

@@ -1,8 +1,9 @@
-﻿(function(angular){
+﻿(function (angular) {
 
-     angular.module('app')
-        .controller('HighscoresCtrl', ['$scope', '$game', function($scope, $game){
+    angular.module('app')
+        .controller('HighscoresCtrl', ['$scope', '$game', function ($scope, $game) {
+            $scope.title = 'Hallo';
             $scope.highscores = $game.highscores;
-            }]);
+        }]);
 
 }(angular));

@@ -3,6 +3,7 @@ p Welcome to CXBird{{username?' ' + username:''}}!
 div(ng-hide='player.online')
 	p Please give your username or Twitter handle to play
 	input(ng-model='username')
+	button(ng-click='setHandle()')
 p(ng-show='player.online') Your highscore: {{player.highscore}}
 ul
 	li(ng-show='player.online')

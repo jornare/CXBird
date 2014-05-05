@@ -34,6 +34,7 @@
                         online:[],
                         count: 0,
                     },
+                    highscores: [],
                     bars: [],
                     watchGame: function(){
                         $socket.emit('watch');    
@@ -97,6 +98,9 @@
                 game.bars = bars;
             });
 
+            $socket.on('highscores', function(data) {
+                game.highscores = data;
+            });
             return game;
         }]);
 

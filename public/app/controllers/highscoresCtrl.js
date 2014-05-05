@@ -1,8 +1,8 @@
 ﻿(function(angular){
 
      angular.module('app')
-        .controller('HighscoresCtrl', ['$scope', function($scope){
-
+        .controller('HighscoresCtrl', ['$scope', '$game', function($scope, $game){
+            $scope.highscores = $game.highscores;
             }]);
 
 }(angular));

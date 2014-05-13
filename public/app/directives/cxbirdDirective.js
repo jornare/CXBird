@@ -1,6 +1,9 @@
 ﻿(function(angular){
-    var playerHeight = 10,
-        playerWidth = 10;
+    var playerWidth = 10;
+        playerHeight = 10;
+        playerRadius = 15;
+        playerImg = new Image();
+        playerImg.src = '../../img/computasLogo.png';
     function CXPlayer(){
         this.x=0;
         this.y=0;
@@ -51,7 +54,25 @@
             ctx.globalAlpha = 1;
         }
         ctx.fillRect(p.x * this.xScale, p.y * this.yScale, playerWidth * this.xScale, playerHeight * this.yScale);
+        //ctx.clip();
         ctx.fillText(p.score, p.x * this.xScale, p.y * this.yScale);
+        //playerImg.onload = function() {
+            //ctx.save();
+            //ctx.beginPath();
+            //ctx.arc(p.x * this.xScale, p.y * this.yScale, playerRadius, 0, Math.PI * 2, true);
+            //ctx.stroke();
+            //ctx.closePath();
+            //ctx.clip();
+
+            //ctx.drawImage(playerImg, p.x * this.xScale, p.y * this.yScale, playerRadius*2, playerRadius*2);
+
+            //ctx.beginPath();
+            //ctx.arc(p.x * this.xScale, p.y * this.yScale, playerRadius, 0, Math.PI, true);
+            //ctx.clip();
+            //ctx.closePath();
+            //ctx.restore();
+        //};
+
     };
 
     CXBird.prototype.renderBar = function(b, ctx) {
@@ -67,6 +88,8 @@
                         game:'='
                     },
                     link: function(scope, element, attrs){
+                        //var playerImg = document.createElement('img');
+                        //playerImg.src = '../../img/computasLogo.png';
                         var canvas = document.createElement('canvas');
                         canvas.setAttribute('width','100%');
                         canvas.setAttribute('height','100%');

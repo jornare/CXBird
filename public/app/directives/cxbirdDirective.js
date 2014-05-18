@@ -1,7 +1,7 @@
 ﻿(function(angular){
     var playerWidth = 10;
         playerHeight = 10;
-        playerRadius = 15;
+        playerRadius = 35;
         playerImg = new Image();
         playerImg.src = '../../img/computasLogo.png';
     function CXPlayer(){
@@ -53,25 +53,16 @@
         }else{
             ctx.globalAlpha = 1;
         }
-        ctx.fillRect(p.x * this.xScale, p.y * this.yScale, playerWidth * this.xScale, playerHeight * this.yScale);
-        //ctx.clip();
-        ctx.fillText(p.score, p.x * this.xScale, p.y * this.yScale);
-        //playerImg.onload = function() {
-            //ctx.save();
-            //ctx.beginPath();
+            ctx.save();
+
+            ctx.beginPath();
+            ctx.rect(p.x * this.xScale, p.y * this.yScale, playerWidth * this.xScale, playerHeight * this.yScale); 
             //ctx.arc(p.x * this.xScale, p.y * this.yScale, playerRadius, 0, Math.PI * 2, true);
-            //ctx.stroke();
-            //ctx.closePath();
-            //ctx.clip();
-
-            //ctx.drawImage(playerImg, p.x * this.xScale, p.y * this.yScale, playerRadius*2, playerRadius*2);
-
-            //ctx.beginPath();
-            //ctx.arc(p.x * this.xScale, p.y * this.yScale, playerRadius, 0, Math.PI, true);
-            //ctx.clip();
-            //ctx.closePath();
-            //ctx.restore();
-        //};
+            ctx.drawImage(playerImg, p.x * this.xScale, p.y * this.yScale, playerRadius*2, playerRadius*2);
+            ctx.closePath();
+            ctx.clip();
+            
+            ctx.restore();
 
     };
 

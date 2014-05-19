@@ -1,6 +1,6 @@
 ﻿(function (angular) {
     Array.prototype.getById = function (id) {
-        var i, j;
+        var i;
         for (i = 0; i < this.length; i++) {
             if (this[i].id == id) {
                 return this[i];
@@ -9,7 +9,7 @@
         return null;
     };
     Array.prototype.removeById = function (id) {
-        var i, j;
+        var i;
         for (i = 0; i < this.length; i++) {
             if (this[i].id == id) {
                 this.splice(i, 1);
@@ -22,31 +22,32 @@
         .service('$game', ['$socket', '$rootScope', function ($socket, $rootScope) {
 
 
-            var game = {
-                me: {
-                    id: 0,
-                    handle: '',
-                    highscore: 0,
-                    img: ''
-                },
-                players: {
-                    all: [],
-                    online: [],
-                    count: 0,
-                },
-                highscores: [],
-                bars: [],
-                watchGame: function () {
-                    $socket.emit('watch');
-                },
-                fly: function () {
-                    $socket.emit('fly', {});
-                },
+            var sessionid = null,
+                game = {
+                    me: null,
+                    players: {
+                        all: [],
+                        online: [],
+                        playing: [],
+                        count: 0,
+                    },
+                    highscores: [],
+                    bars: [],
+                    watchGame: function () {
+                        $socket.emit('watch');
+                    },
+                    fly: function () {
+                        $socket.emit('fly', {});
+                    },
 
-                setHandle: function(handle) {
-                    $socket.emit('setHandle', handle);
-                }
-            };
+                    setHandle: function(handle) {
+                        $socket.emit('setHandle', handle);
+                    }
+                };
+
+            $socket.on('connect', function () {
+                sessionid = $socket.socket.sessionid;
+            });
 
             $socket.on('join', function (users) {
                 var i, u, players = game.players;
@@ -64,6 +65,11 @@
                         }
                     }
                 }
+                if (!game.me) {
+                    u = players.all.getById(sessionid);
+                    game.me = u;
+                    $rootScope.$apply();
+                }
             });
 
             $socket.on('leave', function (users) {
@@ -79,7 +85,7 @@
 
             $socket.on('updatePlayer', function (user) {
                 var players = game.players,
-                    u = players.all.getById(users[i].id);
+                    u = players.all.getById(user.id);
                 if (u) {
                     u.handle = user.handle;
                     u.highscore = user.highscore;

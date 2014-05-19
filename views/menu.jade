@@ -1,10 +1,15 @@
 h1= title
-p Welcome to CXBird{{username?' ' + username:''}}!
-div(ng-hide='player.online')
-	p Please give your username or Twitter handle to play
-	input(ng-model='username')
-	button(ng-click='setHandle()')
-p(ng-show='player.online') Your highscore: {{player.highscore}}
+header
+	h1 CXBird
+	p(ng-show='player.online') Welcome{{username?' ' + username:''}}!
+section(class='login' ng-hide='player.online')
+	p Please give your username or twitter handle to play.
+	div
+		input(ng-model='username')
+		button(ng-click='setHandle()')
+			img(src='../img/play.png' class='icon')
+section(class='loggedIn')
+	p(ng-show='player.online') Your highscore: {{player.highscore}}
 ul
 	li(ng-show='player.online')
 		a(ng-href='#/player') Play!

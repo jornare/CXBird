@@ -9,7 +9,7 @@ section(class='login' ng-hide='player.handle')
 		button(ng-click='setHandle()')
 			img(src='../img/play.png' class='icon')
 section(class='loggedIn')
-	p(ng-show='player.online') Your highscore: {{player.highscore}}
+	p(ng-show='player.handle') Your highscore: {{player.highscore}}
 ul
 	li(ng-show='player.online')
 		a(ng-href='#/player') Play!

@@ -1,21 +1,48 @@
+@font-face {
+    font-family: 'din';
+    src: url('../fonts/dinpro-bold-webfont.eot');
+    src: url('../fonts/dinpro-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dinpro-bold-webfont.woff') format('woff'),
+         url('../fonts/dinpro-bold-webfont.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'din';
+    src: url('../fonts/dinpro-italic-webfont.eot');
+    src: url('../fonts/dinpro-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dinpro-italic-webfont.woff') format('woff'),
+         url('../fonts/dinpro-italic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+
+}
+@font-face {
+    font-family: 'din';
+    src: url('../fonts/dinpro-webfont.eot');
+    src: url('../fonts/dinpro-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dinpro-webfont.woff') format('woff'),
+         url('../fonts/dinpro-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'din';
+    src: url('../fonts/din-light-webfont.eot');
+    src: url('../fonts/din-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/din-light-webfont.woff') format('woff'),
+         url('../fonts/din-light-webfont.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 15px din, "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
   color: #00b7ff;
-}
-button {
-  padding: 3px 1px 0 5px;
-}
-ul {
-  list-style-type: none;
-}
-li {
-  margin: 3px 0 0 0;
-}
-.login div {
-    line-height: 20px;
 }
 .flybutton {
   position: fixed;

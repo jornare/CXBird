@@ -6,6 +6,7 @@
                 $scope.username = '';
                 $scope.players = $game.players;
                 $scope.player = $game.me;
+                $scope.$game = $game;
 //                $scope.$watch('username', function () {
 //                    if ($scope.username) {
 //                        $scope.player.online = true;
@@ -14,9 +15,11 @@
 
                 $scope.setHandle = function () {
                     $game.setHandle($scope.username);
-                    $game.me.online = true;
                 };
 
+                $scope.$watch('$game.me', function () {
+                    $scope.player = $game.me;
+                });
             }]);
 
 }(angular));

@@ -1,8 +1,8 @@
 h1= title
 header
 	h1 CXBird
-	p(ng-show='player.online') Welcome{{username?' ' + username:''}}!
-section(class='login' ng-hide='player.online')
+	p(ng-show='player.online') Welcome{{player.handle?' ' + player.handle:''}}!
+section(class='login' ng-hide='player.handle')
 	p Please give your username or twitter handle to play.
 	div
 		input(ng-model='username')

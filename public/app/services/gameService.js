@@ -39,6 +39,9 @@
                     play: function() {
                         $socket.emit('play', {});
                     },
+                    stopPlay: function() {
+                        $socket.emit('stopPlay', {});
+                    },
                     fly: function () {
                         $socket.emit('fly', {});
                     },
@@ -77,28 +80,33 @@
 
             $socket.on('leave', function (users) {
                 var i, u, players = game.players;
-                for (i = 0; i < users.length; i++) {
-                    u = players.all.getById(users[i].id);
-                    if (u) {
-                        u.online = false;
-                        players.online.removeById(users[i].id);
+                $rootScope.$apply(function () {
+                    for (i = 0; i < users.length; i++) {
+                        u = players.all.getById(users[i].id);
+                        if (u) {
+                            u.online = false;
+                            players.online.removeById(users[i].id);
+                        }
                     }
-                }
+                });
             });
 
             $socket.on('updatePlayer', function (user) {
                 var players = game.players,
                     u = players.all.getById(user.id);
                 if (u) {
-                    u.handle = user.handle;
-                    u.highscore = user.highscore;
-                    u.img = user.img;
-                    if (!u.playing && user.playing) {
-                        players.playing.push(u);
-                        u.playing = user.playing;
-                    } else if (u.playing && !user.playing) {
-                        players.playing.removeById(u.id);
-                    }
+                    $rootScope.$apply(function () {
+                        u.handle = user.handle;
+                        u.highscore = user.highscore;
+                        u.img = user.img;
+                        if (!u.playing && user.playing) {
+                            players.playing.push(u);
+                            u.playing = user.playing;
+                        } else if (u.playing && !user.playing) {
+                            players.playing.removeById(u.id);
+                            u.playing = user.playing;
+                        }
+                    });
                 }
             });
             $socket.on('move', function (data) {

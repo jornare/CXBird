@@ -12,6 +12,11 @@
                     $scope.color = me.color;
                 }
             });
+
+            $scope.$on('$destroy', function () {
+                $game.stopPlay();
+            });
+
         }]);
 
 }(angular));

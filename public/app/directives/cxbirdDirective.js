@@ -4,6 +4,9 @@
         playerRadius = 35;
         playerImg = new Image();
         playerImg.src = '../../img/computasLogo.png';
+
+
+
     function CXPlayer(){
         this.x=0;
         this.y=0;
@@ -21,8 +24,9 @@
     }
     
     CXBird.prototype.start = function(){
+        
         var self = this;
-        this.timer = setInterval(function(){self.render()}, 50);
+        this.timer = setInterval(function(){self.render()}, 0);
     };
     
     CXBird.prototype.render = function() {
@@ -42,8 +46,9 @@
     };
 
     CXBird.prototype.renderBackground = function(ctx){
-        ctx.fillStyle='white';
-        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+     
+       
+
     };
 
     CXBird.prototype.renderPlayer = function(p, ctx){
@@ -79,15 +84,18 @@
                         game:'='
                     },
                     link: function(scope, element, attrs){
+                        
                         //var playerImg = document.createElement('img');
                         //playerImg.src = '../../img/computasLogo.png';
                         var canvas = document.createElement('canvas');
+                        canvas.setAttribute('id','canvas');
                         canvas.setAttribute('width','100%');
                         canvas.setAttribute('height','100%');
-                        canvas.width="640";
-                        canvas.height="480";
+                        canvas.width="800";
+                        canvas.height="600";
                         element[0].appendChild(canvas);
                         scope.cxbird = new CXBird(canvas.getContext('2d'), scope.game);
+                        new GameObjectManager().startupGameObjectManager();
                         
                     }
                 };

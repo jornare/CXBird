@@ -1,7 +1,7 @@
 h1= title
 header
 	h1 CXBird
-	p(ng-show='player.online') Welcome{{player.handle?' ' + player.handle:''}}!
+	p Welcome{{player.handle?' ' + player.handle:''}}!
 section(class='login' ng-hide='player.handle')
 	p Please give your username or twitter handle to play.
 	div
@@ -9,13 +9,13 @@ section(class='login' ng-hide='player.handle')
 		button(ng-click='setHandle()')
 			img(src='../img/play.png' class='icon')
 section(class='loggedIn')
-	p(ng-show='player.online') Your highscore: {{player.highscore}}
+	p(ng-show='player.handle') Your highscore: {{player.highscore}}
 ul
-	li(ng-show='player.online')
+	li(ng-show='player.handle')
 		a(ng-href='#/player') Play!
 	li
 		a(ng-href='#/highscores') Highscores
 	li
-		a(ng-href='#/game')	Current game
+		a(ng-href='#/game') Current game
 div Online players: {{players.online.length}}
 div Total players: {{players.count}}

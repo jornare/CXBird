@@ -4,7 +4,7 @@
         playerHeight = 10,
         playerRadius = playerWidth / 2,
         playerImg = new Image();
-    playerImg.src = '../../img/computasLogoMask.png';
+    playerImg.src = '../../img/cxLogo.png';
 
     //constructor
     cxbird.Game = function (ctx, gameService) {
@@ -71,9 +71,9 @@
             rgb = new RGBColor(player.color);
 
         for (var i = 0; i < l; i += 4) {
-            c.data[i] = rgb.r;
-            c.data[i + 1] = rgb.g;
-            c.data[i + 2] = rgb.b;
+            c.data[i] = Math.floor(c.data[i] * rgb.r / 256);
+            c.data[i + 1] = Math.floor(c.data[i + 1] * rgb.g);
+            c.data[i + 2] = Math.floor(c.data[i + 2] * rgb.b);
         }
         ctx.putImageData(c, 0, 0);
     }

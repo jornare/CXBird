@@ -50,6 +50,16 @@
                         $socket.emit('setHandle', handle);
                     }
                 };
+            //cleanup
+            setTimeout(function () {
+                var i = 0, p = game.players.playing;
+                for (i = 0; i<p.length; i++) {
+                    if(!p[i].playing) {
+                        game.players.playing.splice(i,1);
+                        i--;
+                    }
+                }
+            }, 10000);
 
             $socket.on('connect', function () {
                 sessionid = $socket.socket.sessionid;

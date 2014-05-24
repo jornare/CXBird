@@ -14,8 +14,8 @@
         this.timer = null;
         this.gameService = gameService;
         this.background = new cxbird.Background(ctx);
-        this.xScale = 6.4;
-        this.yScale = 4.8;
+        this.xScale = 8.0;
+        this.yScale = 6.0;
         this.time = Date.now();
     };
 
@@ -43,10 +43,6 @@
 
     };
 
-    cxbird.Game.prototype.renderBackground = function (ctx) {
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    };
 
     cxbird.Game.prototype.renderPlayer = function (p, ctx) {
         ctx.fillStyle = p.color;
@@ -61,7 +57,6 @@
         }
 
         ctx.drawImage(p.canvas, p.x * this.xScale, p.y * this.yScale, playerWidth * this.xScale, playerHeight * this.yScale);
-
 
     };
 
@@ -86,7 +81,14 @@
 
     cxbird.Game.prototype.renderBar = function (b, ctx) {
         ctx.fillRect(b.x * this.xScale, 0, b.w * this.yScale, b.hy1 * this.yScale);
-        ctx.fillRect(b.x * this.xScale, b.hy2 * this.yScale, b.w * this.yScale, 100 * this.yScale);
+        //ctx.fillRect(b.x * this.xScale, b.hy2 * this.yScale, b.w * this.yScale, 100 * this.yScale);
+        ctx.save();
+        ctx.translate(b.x * this.xScale + 10, b.hy2 * this.yScale-5);
+        ctx.rotate(Math.PI/2);
+        ctx.fillStyle = 'yellow';
+        ctx.font = "70px Georgia";
+        ctx.fillText("@}-'--,--'------", 0, 0);
+        ctx.restore();
     };
 
 

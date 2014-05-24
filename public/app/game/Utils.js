@@ -16,12 +16,16 @@ Array.prototype.remove = function(/**Number*/ from, /**Number*/ to)
 */
 Array.prototype.removeObject = function(object)
 {
-    for (var i = 0; i < this.length; ++i)
-    {
-        if (this[i] === object)
-        {
-            this.remove(i);
-            break;
-        }
+    var i = this.indexOf(object);
+    if (i) {
+        this.slice(i, 1);
     }
+    //for (var i = 0; i < this.length; ++i)
+    //{
+    //    if (this[i] === object)
+    //    {
+    //        this.remove(i);
+    //        break;
+    //    }
+    //}
 }

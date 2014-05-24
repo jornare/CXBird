@@ -31,3 +31,6 @@ img.player {
   position: absolute;
   bottom: 0;
 }
+p.error {
+  color: #f00;
+}

@@ -48,6 +48,9 @@
 
                     setHandle: function(handle) {
                         $socket.emit('setHandle', handle);
+                        if(window.localStorage) {
+                            window.localStorage.handle = handle;
+                        }
                     }
                 };
             //cleanup
@@ -63,6 +66,16 @@
 
             $socket.on('connect', function () {
                 sessionid = $socket.socket.sessionid;
+                game.players.all.length = 0;
+                game.players.online.length = 0;
+                game.players.playing.length = 0;
+                game.players.count = 0;
+                if (window.localStorage) {
+                    var handle = window.localStorage.handle;
+                    if (handle) {
+                        game.setHandle(handle);
+                    }
+                }
             });
 
             $socket.on('join', function (users) {
@@ -96,6 +109,7 @@
                         if (u) {
                             u.online = false;
                             players.online.removeById(users[i].id);
+                            players.playing.removeById(users[i].id);
                         }
                     }
                 });
@@ -108,7 +122,9 @@
                     $rootScope.$apply(function () {
                         u.handle = user.handle;
                         u.highscore = user.highscore;
-                        u.img = user.img;
+                        u.color = user.color;
+                        u.rank = user.rank;
+                        //u.img = user.img;
                         if (!u.playing && user.playing) {
                             players.playing.push(u);
                             u.playing = user.playing;

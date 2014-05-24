@@ -10,12 +10,18 @@
             $scope.$watch('$game.me', function (me) {
                 if (me) {
                     $scope.me = me;
-                    $game.play();
+                    //$game.play();
                     $scope.color = me.color;
                     $scope.$watch('me.color', function (color) {
                         if (color) {
                             $scope.color = me.color;
                         }
+                    });
+                    $scope.$watch('me.playing', function (playing) {
+                        if (!playing) {
+                            $game.play();
+                        }
+
                     });
                 }
             });

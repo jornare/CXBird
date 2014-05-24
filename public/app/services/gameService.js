@@ -66,6 +66,10 @@
 
             $socket.on('connect', function () {
                 sessionid = $socket.socket.sessionid;
+                game.players.all.length = 0;
+                game.players.online.length = 0;
+                game.players.playing.length = 0;
+                game.players.count = 0;
                 if (window.localStorage) {
                     var handle = window.localStorage.handle;
                     if (handle) {

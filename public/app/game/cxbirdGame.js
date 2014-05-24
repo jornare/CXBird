@@ -45,6 +45,10 @@
 
 
     cxbird.Game.prototype.renderPlayer = function (p, ctx) {
+        var x = p.x * this.xScale,
+            y = p.y * this.yScale,
+            w = playerWidth * this.xScale,
+            h = playerHeight * this.yScale;
         ctx.fillStyle = p.color;
         if (p.life < 0) {
             ctx.globalAlpha = 1.0 + (p.life % 500) * 0.0025;
@@ -56,7 +60,19 @@
             this.addPlayerBlob(p);
         }
 
-        ctx.drawImage(p.canvas, p.x * this.xScale, p.y * this.yScale, playerWidth * this.xScale, playerHeight * this.yScale);
+        //leader shirt
+        if (p.rank == 1) {
+            ctx.save();
+            ctx.translate(x + w/2,y + h/2);
+            ctx.scale(w / h, 1);
+            ctx.beginPath();
+            ctx.arc(0, 0, h / 2 -1, 0, 2 * Math.PI, false);
+            ctx.strokeStyle = 'rgba(255,255,0,0.7)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.restore();
+        }
+        ctx.drawImage(p.canvas, x, y, w, h);
 
     };
 
@@ -72,8 +88,8 @@
 
         for (var i = 0; i < l; i += 4) {
             c.data[i] = Math.floor(c.data[i] * rgb.r / 256);
-            c.data[i + 1] = Math.floor(c.data[i + 1] * rgb.g);
-            c.data[i + 2] = Math.floor(c.data[i + 2] * rgb.b);
+            c.data[i + 1] = Math.floor(c.data[i + 1] * rgb.g / 256);
+            c.data[i + 2] = Math.floor(c.data[i + 2] * rgb.b / 256);
         }
         ctx.putImageData(c, 0, 0);
     }

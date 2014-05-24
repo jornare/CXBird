@@ -21,7 +21,6 @@
     angular.module('app')
         .service('$game', ['$socket', '$rootScope', function ($socket, $rootScope) {
 
-
             var sessionid = null,
                 game = {
                     me: null,
@@ -53,6 +52,12 @@
                         }
                     }
                 };
+
+            window.onunload = function () {
+                $socket.emit('disconnect');
+                $socket.disconnect();
+            };
+
             //cleanup
             setTimeout(function () {
                 var i = 0, p = game.players.playing;

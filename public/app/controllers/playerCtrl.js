@@ -6,12 +6,20 @@
             $scope.$game = $game;
             $scope.fly = $game.fly;
             $scope.color = 'gray';
+            $scope.me = $game.me;
             $scope.$watch('$game.me', function (me) {
                 if (me) {
+                    $scope.me = me;
                     $game.play();
                     $scope.color = me.color;
+                    $scope.$watch('me.color', function (color) {
+                        if (color) {
+                            $scope.color = me.color;
+                        }
+                    });
                 }
             });
+
 
             $scope.$on('$destroy', function () {
                 $game.stopPlay();

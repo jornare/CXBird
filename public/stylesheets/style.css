@@ -11,5 +11,5 @@ a {
   left: 0;
   bottom: 0;
   right: 0;
-  background: #f00;
+  background: url('../img/button.gif') no-repeat;
 }

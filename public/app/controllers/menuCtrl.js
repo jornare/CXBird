@@ -1,8 +1,8 @@
 ﻿(function (angular) {
 
     angular.module('app')
-        .controller('MenuCtrl', ['$scope', '$game',
-            function ($scope, $game) {
+        .controller('MenuCtrl', ['$scope', '$game', '$timeout',
+            function ($scope, $game, $timeout) {
                 $scope.username = '';
                 $scope.players = $game.players;
                 $scope.player = $game.me;
@@ -20,6 +20,10 @@
                 $scope.$watch('$game.me', function () {
                     $scope.player = $game.me;
                 });
+
+                $timeout(function () {
+                    $scope.$apply();
+                },5000);
             }]);
 
 }(angular));

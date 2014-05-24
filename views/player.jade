@@ -1,3 +1,4 @@
 div.flybutton(ng-mousedown='fly()' ng-style='{background:color}')
-    div(ng-bind="me.handle + ' '+ me.score + '/'+ me.highscore + ' rank: ' + me.rank + '/'+$game.players.all.length")
+    div.header
+        div.text(ng-bind="me.handle + ' '+ me.score + '/'+ me.highscore + ' rank: ' + me.rank + '/'+$game.players.all.length")
     img.player(src="../img/button.png")

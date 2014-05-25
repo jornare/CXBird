@@ -140,6 +140,13 @@ a.burger div {
 td.number {
   text-align: right;
 }
+table.currentplayers {
+  margin: 20px;
+  font-family: 'Lucida Console', Monaco, monospace;
+}
+table.currentplayers th {
+  background-color: #0090db;
+}
 table.currentplayers th,
 table.currentplayers td {
   padding: 10px;
@@ -149,4 +156,8 @@ table.currentplayers th,
 table.currentplayers td {
   border: 1px solid #19469d;
   border-collapse: collapse;
+}
+cxbird {
+  float: left;
+  margin: 20px;
 }

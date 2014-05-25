@@ -96,14 +96,131 @@
 
 
     cxbird.Game.prototype.renderBar = function (b, ctx) {
-        ctx.fillRect(b.x * this.xScale, 0, b.w * this.yScale, b.hy1 * this.yScale);
+        var leafRight = "'";
+        var leafLeft = ",";
+        var floralBase = "}";
+        var rose = "@";
+
+        var green = '#3d9943';
+        var greenShadow = '#335d36';
+        var darkGreen = '#054b0a';
+        var darkGreenShadow = '#033507';
+        var red = '#a71a1a';
+        var redShadow = '#7b0e0e';
+
+        var blur = 1;
+        var posX = 0;
+        var posY = 0;
+        ctx.shadowOffsetX = posX + 2;
+        ctx.shadowBlur = blur;
+
+        ctx.font = "70px Georgia";
+
+        ctx.save();
+
+        ctx.translate(b.x * this.xScale + 10, b.hy1 * this.yScale - 5);
+        ctx.rotate(Math.PI/2);
+
+        ctx.fillStyle = green;
+        ctx.shadowColor = greenShadow;
+        ctx.fillText('----', posX, posY);
+        posX += ctx.measureText('----').width;
+
+        ctx.fillStyle = darkGreen;
+        ctx.shadowColor = darkGreenShadow;
+        ctx.fillText(leafRight, posX, posY);
+        posX += ctx.measureText(leafRight).width;
+
+        ctx.fillStyle = green;
+        ctx.shadowColor = greenShadow;
+        ctx.fillText('--', posX, posY);
+        posX += ctx.measureText('--').width;
+
+        ctx.fillStyle = darkGreen;
+        ctx.shadowColor = darkGreenShadow;
+        ctx.fillText(leafLeft, posX, posY);
+        posX += ctx.measureText(leafLeft).width;
+
+        ctx.fillStyle = green;
+        ctx.shadowColor = greenShadow;
+        ctx.fillText('--', posX, posY);
+        posX += ctx.measureText('--').width;
+
+        ctx.fillStyle = darkGreen;
+        ctx.shadowColor = darkGreenShadow;
+        ctx.fillText(leafRight, posX, posY);
+        posX += ctx.measureText(leafRight).width;
+
+        ctx.fillStyle = green;
+        ctx.shadowColor = greenShadow;
+        ctx.fillText('-', posX, posY);
+        posX += ctx.measureText('-').width;
+
+        ctx.fillStyle = darkGreen;
+        ctx.shadowColor = darkGreenShadow;
+        ctx.fillText(floralBase, posX, posY);
+        posX += ctx.measureText(floralBase).width;
+        
+        ctx.fillStyle = red;
+        ctx.shadowColor = redShadow;
+        ctx.fillText(rose, posX, posY);
+        posX += ctx.measureText(rose).width;
+
+        ctx.restore();
+
+        //ctx.fillRect(b.x * this.xScale, 0, b.w * this.yScale, b.hy1 * this.yScale);
         //ctx.fillRect(b.x * this.xScale, b.hy2 * this.yScale, b.w * this.yScale, 100 * this.yScale);
         ctx.save();
         ctx.translate(b.x * this.xScale + 10, b.hy2 * this.yScale-5);
         ctx.rotate(Math.PI/2);
-        ctx.fillStyle = 'yellow';
-        ctx.font = "70px Georgia";
-        ctx.fillText("@}-'--,--'------", 0, 0);
+
+        var posX = 0;
+        var posY = 0;
+
+        ctx.fillStyle = red;
+        ctx.shadowColor = redShadow;
+        ctx.fillText(rose, posX, posY);
+        posX += ctx.measureText(rose).width;
+
+        ctx.fillStyle = darkGreen;
+        ctx.shadowColor = darkGreenShadow;
+        ctx.fillText(floralBase, posX, posY);
+        posX += ctx.measureText(floralBase).width;
+
+        ctx.fillStyle = green;
+        ctx.shadowColor = greenShadow;
+        ctx.fillText('-', posX, posY);
+        posX += ctx.measureText('-').width;
+
+        ctx.fillStyle = darkGreen;
+        ctx.shadowColor = darkGreenShadow;
+        ctx.fillText(leafRight, posX, posY);
+        posX += ctx.measureText(leafRight).width;
+
+        ctx.fillStyle = green;
+        ctx.shadowColor = greenShadow;
+        ctx.fillText('--', posX, posY);
+        posX += ctx.measureText('--').width;
+
+        ctx.fillStyle = darkGreen;
+        ctx.shadowColor = darkGreenShadow;
+        ctx.fillText(leafLeft, posX, posY);
+        posX += ctx.measureText(leafLeft).width;
+
+        ctx.fillStyle = green;
+        ctx.shadowColor = greenShadow;
+        ctx.fillText('--', posX, posY);
+        posX += ctx.measureText('--').width;
+
+        ctx.fillStyle = darkGreen;
+        ctx.shadowColor = darkGreenShadow;
+        ctx.fillText(leafRight, posX, posY);
+        posX += ctx.measureText(leafRight).width;
+
+        ctx.fillStyle = green;
+        ctx.shadowColor = greenShadow;
+        ctx.fillText('----', posX, posY);
+        posX += ctx.measureText('----').width;
         ctx.restore();
     };
 

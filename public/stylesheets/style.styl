@@ -154,6 +154,27 @@ cxbird
   height: 100%
 .ticket
   display:inline-block
+.winner
+  font-size: 30px
+  color:yellow
+  -webkit-animation-name: 'pulse_animation';
+  -webkit-animation-duration: 2000ms;
+  -webkit-transform-origin:70% 70%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-text-shadow: 1px 0px 20px yellow;
+  -webkit-text-shadow: 1px 0px 20px yellow;
+  text-shadow: 1px 0px 20px yellow;
+@-webkit-keyframes pulse_animation
+  0% { font-size:30px; }
+  50% { font-size:60px; }
+  100% { font-size:30px; }
+/*
+  0% { -webkit-transform: scale(1); }
+  50% { -webkit-transform: scale(2); }
+  100% { -webkit-transform: scale(1); }
+  */
+
 
 
 .spin.ng-enter, .spin.ng-move

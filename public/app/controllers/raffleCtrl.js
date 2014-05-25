@@ -53,10 +53,12 @@
                         if ($scope.tickets.length > 1) {
                             $timeout(function () {
                                 raffle(winner);
-                            },200);
+                            },500);
                         } else {
-                            $scope.winner = $scope.tickets[0].handle;
-                            $scope.tickets.pop();
+                            $timeout(function () {
+                                $scope.winner = $scope.tickets[0].handle;
+                            },2000);
+                            //$scope.tickets.pop();
                            // alert('Winner! is ' + $scope.tickets[0].handle);
                         }
                     };

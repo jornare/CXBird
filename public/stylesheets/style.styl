@@ -118,6 +118,28 @@ a.burger div
   left:0
 .view-animate.ng-leave.ng-leave-active
   left:-100%
+  color: red
+
+td.number
+  text-align:right
+
+table.currentplayers
+  margin:20px
+  font-family: 'Lucida Console', Monaco, monospace
+
+table.currentplayers th
+  background-color: #0090db
+
+table.currentplayers th, table.currentplayers td
+  padding:10px
+
+table.currentplayers,table.currentplayers th, table.currentplayers td
+  border: 1px solid #19469D
+  border-collapse:collapse
+
+cxbird
+  float:left
+  margin:20px
 
 
 
@@ -134,53 +156,19 @@ a.burger div
   display:inline-block
 
 
+.spin.ng-enter, .spin.ng-move
+  display: block;
 
-/*
-We're using CSS transitions for when
-the enter and move events are triggered
-for the element that has the .repeated-item
-class
-*/
-.spin.ng-enter, .spin.ng-move {
-
-
-    display: block;
-
-}
-
-/*
-The ng-enter-active and ng-move-active
-are where the transition destination properties
-are set so that the animation knows what to
-animate.
-*/
 .spin.ng-enter.ng-enter-active,
-.spin.ng-move.ng-move-active {
+.spin.ng-move.ng-move-active
 	opacity:1;
-}
 
-/*
-We're using CSS keyframe animations for when
-the leave event is triggered for the element
-that has the .repeated-item class
-*/
-.spin.ng-leave {
-	-webkit-animation:1s leave;
-	-moz-animation:1s leave;
-	-o-animation:1s leave;
-	animation:1s leave;
-	}
+.spin.ng-leave
+  -webkit-animation:1s leave
+  -moz-animation:1s leave
+  -o-animation:1s leave
+  animation:1s leave
 
-
-
-/*
-spin.ng-,
-spin.ng-remove { 
-    -webkit-animation: enter 600ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
-    animation: enter 600ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
-    display: block;
-    position: relative;
-} */
 @-webkit-keyframes enter {
     from {
         opacity: 0;
@@ -263,13 +251,7 @@ spin.ng-remove {
         top: 0px;
     }
 }
- /*
-spin.ng-leave.ng-leave-active { 
-    -webkit-animation: leave 600ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
-    animation: leave 600ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
-    display: block;
-    position: relative;
-} */
+
 @-webkit-keyframes leave {
     to {
         opacity: 0;

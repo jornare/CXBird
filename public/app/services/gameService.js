@@ -129,6 +129,7 @@
                         u.highscore = user.highscore;
                         u.color = user.color;
                         u.rank = user.rank;
+                        u.score = user.score;
                         //u.img = user.img;
                         if (!u.playing && user.playing) {
                             players.playing.push(u);

@@ -35,7 +35,10 @@
     <Compile Include="lib\game.js" />
     <Compile Include="public\app\controllers\menuCtrl.js" />
     <Compile Include="public\app\controllers\gameCtrl.js" />
+    <Compile Include="public\app\controllers\raffleCtrl.js" />
     <Compile Include="public\app\directives\cxbirdDirective.js" />
+    <Compile Include="public\app\filters\truncateHandle.js" />
+    <Compile Include="public\app\filters\unnamedPlayers.js" />
     <Compile Include="public\app\game\ApplicationManager.js" />
     <Compile Include="public\app\game\cxbirdBackground.js" />
     <Compile Include="public\app\game\cxbirdGame.js" />
@@ -48,9 +51,9 @@
     <Compile Include="public\app\services\playerService.js" />
     <Compile Include="public\app\services\socketService.js" />
     <Compile Include="public\app\services\gameService.js" />
+    <Compile Include="public\lib\angular-animate.js" />
     <Compile Include="public\lib\angular-route.js" />
     <Compile Include="public\lib\angular.js" />
-    <Compile Include="public\app\controllers\drawingCtrl.js" />
     <Compile Include="public\app\controllers\highscoresCtrl.js" />
     <Compile Include="public\app\app.js" />
     <Compile Include="public\app\controllers\playerCtrl.js" />
@@ -58,6 +61,18 @@
     <Compile Include="routes\index.js" />
     <Compile Include="routes\user.js" />
     <Content Include="package.json" />
+    <Content Include="public\fonts\din-light-webfont.eot" />
+    <Content Include="public\fonts\din-light-webfont.ttf" />
+    <Content Include="public\fonts\din-light-webfont.woff" />
+    <Content Include="public\fonts\dinpro-bold-webfont.eot" />
+    <Content Include="public\fonts\dinpro-bold-webfont.ttf" />
+    <Content Include="public\fonts\dinpro-bold-webfont.woff" />
+    <Content Include="public\fonts\dinpro-italic-webfont.eot" />
+    <Content Include="public\fonts\dinpro-italic-webfont.ttf" />
+    <Content Include="public\fonts\dinpro-italic-webfont.woff" />
+    <Content Include="public\fonts\dinpro-webfont.eot" />
+    <Content Include="public\fonts\dinpro-webfont.ttf" />
+    <Content Include="public\fonts\dinpro-webfont.woff" />
     <Content Include="public\img\bg1.png" />
     <Content Include="public\img\bg2.png" />
     <Content Include="public\img\bg3.png" />
@@ -71,18 +86,20 @@
     <Content Include="README.md" />
     <Content Include="views\highscores.jade" />
     <Content Include="views\game.jade" />
-    <Content Include="views\drawing.jade" />
     <Content Include="views\player.jade" />
     <Content Include="views\menu.jade" />
     <Content Include="views\index.jade" />
+    <Content Include="views\raffle.jade" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="lib\" />
     <Folder Include="public\" />
     <Folder Include="public\app\directives\" />
+    <Folder Include="public\app\filters\" />
     <Folder Include="public\app\game\" />
     <Folder Include="public\app\objects\" />
     <Folder Include="public\app\services\" />
+    <Folder Include="public\fonts\" />
     <Folder Include="public\img\" />
     <Folder Include="public\lib\" />
     <Folder Include="public\app\controllers\" />

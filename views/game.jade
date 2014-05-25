@@ -1,6 +1,14 @@
-div(class='playerdiv')
-	p(ng-repeat='player in players | unnamed') {{ player.handle }} ({{player.color}}): {{player.score}}
-
-
 cxbird(width='50%', height='100%', game='game', display='inline-block')
 
+
+table.currentplayers
+	tr
+		th Handle
+		th Color
+		th Highscore
+		th Score
+	tr(ng-repeat='player in players | unnamed')
+		td {{player.handle}}
+		td(style='background-color:{{player.color}}')
+		td.number {{player.highscore}}
+		td.number {{player.score}}

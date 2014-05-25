@@ -1,1 +1,6 @@
-cxbird(width='100%', height='100%', game='game')
+div(class='playerdiv')
+	p(ng-repeat='player in players | unnamed') {{ player.handle }} ({{player.color}}): {{player.score}}
+
+
+cxbird(width='50%', height='100%', game='game', display='inline-block')
+

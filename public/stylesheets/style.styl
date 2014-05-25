@@ -1,6 +1,7 @@
 body
-  padding: 50px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  text-align:center
+  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif
+  background: #c8e8ea url('../img/bg3.png') top left repeat-x
 a
   color: #00B7FF
 .flybutton
@@ -24,4 +25,99 @@ img.player
   width:100%
   max-height:90%
   position:absolute
+  left:0
   bottom:0
+p.error
+  color: red
+a.btn
+  text-align:center
+  background: #ECECEC;
+  border-radius: 15px;
+  padding: 10px 20px;
+  display: block;
+  font-family: arial;
+  font-weight: bold;
+  color:#7f7f7f;
+  text-decoration: none;
+  text-shadow:0px 1px 0px #fff;
+  border:1px solid #a7a7a7;
+  width: 145px;
+  margin:0px auto;
+  margin-top:40px;
+  box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+  -webkit-transition:box-shadow 0.5s;
+a.btn i
+  float: right;
+  margin-top: 2px;
+
+a.btn:hover
+  box-shadow: 0px 2px 1px white inset, 0px -2px 20px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+
+a.btn:active
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.1), 0px 2px 10px rgba(0, 0, 0, 0.1);
+  background: -webkit-linear-gradient(top, #d1d1d1 0%,#ECECEC 100%);
+
+a.burger
+  background: rgba(200,200,255,0.5)
+  border: 1px solid rgba(0,0,0,0.5)
+  border-radius: 2px
+  width:34px
+  cursor: pointer
+a.burger div
+	border: 1px solid black
+	height:3px
+	border-radius: 3px
+	background: black
+	margin: 3px
+
+.pull-left
+  float: left
+
+.highscores .list
+  display: inline-block
+  margin: 0 auto
+  font-size: 20pt
+.highscores .list
+  margin: 5px
+.highscores .list .me
+  color: yellow
+.list .col1
+  width: 80px
+  float: left
+.list .col2
+  width: 380px
+  float: left
+
+.view-animate-container
+  margin: 15px
+  position:absolute
+  top:0
+  bottom:0
+  left:0
+  right:0
+  background: rgba(255,255,255,0.4)
+  border:1px solid rgba(0,0,0,0.4)
+  overflow:hidden
+
+.view-animate
+  padding: 15px
+.view-animate.ng-enter,
+.view-animate.ng-leave
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s
+  display:block
+  width:100%
+  position:absolute
+  top:0
+  left:0
+  right:0
+  bottom:0
+
+
+.view-animate.ng-enter
+  left:100%
+
+.view-animate.ng-enter.ng-enter-active
+  left:0
+.view-animate.ng-leave.ng-leave-active
+  left:-100%

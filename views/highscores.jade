@@ -1,4 +1,4 @@
-h1 Highscores
-    p {{highscores.length}}
-    ol
-        li(ng-repeat="player in highscores") {{player.handle || 'Anonymous'}} {{player.highscore}}
+div.highscores
+    h1 Highscores
+        ol
+            li(ng-repeat="player in highscores") {{player.handle || 'Anonymous'}} {{player.highscore}}

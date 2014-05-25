@@ -62,8 +62,10 @@
     <Content Include="public\img\bg2.png" />
     <Content Include="public\img\bg3.png" />
     <Content Include="public\img\button.gif" />
+    <Content Include="public\img\button.png" />
     <Content Include="public\img\computasLogo.png" />
     <Content Include="public\img\computasLogoMask.png" />
+    <Content Include="public\img\cxLogo.png" />
     <Content Include="public\img\play.png" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />

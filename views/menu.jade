@@ -10,13 +10,13 @@ div.menupage
                 img(src='../img/play.png' class='icon')
     section(class='loggedIn')
         p(ng-show='player.handle') Your highscore: {{player.highscore}}
-    ul
-        li(ng-show='player.handle')
-            a(ng-href='#/player') Play!
-        li
-            a(ng-href='#/highscores') Highscores
-        li
-            a(ng-href='#/game') Current game
+        div(ng-show='player.handle')
+            a.btn(href='#/player') Play!
+        div
+            a.btn(href='#/highscores') Highscores
+        div
+            a.btn(href='#/game') Current game
+    div &nbsp;
     div Online players: {{players.online.length}}
     div Playing: {{players.playing.length}}
     div Total players: {{players.all.length}}

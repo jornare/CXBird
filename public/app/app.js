@@ -1,6 +1,6 @@
 ﻿(function(angular){
 
-    angular.module('app', ['ngRoute'])
+    angular.module('app', ['ngRoute', 'ngAnimate'])
     .config(['$routeProvider',
         function($routeProvider){
             $routeProvider.

@@ -92,10 +92,16 @@
                         if (!players.online.getById(users[i].id)) {
                             players.online.push(users[i]);
                         }
+                        if (users[i].playing && !players.playing.getById(users[i].id)) {
+                            players.online.push(users[i]);
+                        }
                     } else {
                         players.all.push(users[i]);
                         if (users[i].online) {
                             players.online.push(users[i]);
+                        }
+                        if (users[i].playing) {
+                            players.playing.push(users[i]);
                         }
                     }
                 }

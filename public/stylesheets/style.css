@@ -176,6 +176,7 @@ cxbird {
 }
 .ticket {
   display: inline-block;
+  margin: 3px;
 }
 .winner {
   font-size: 30px;

@@ -24,6 +24,10 @@
                 templateUrl: '/player',
                 controller: 'PlayerCtrl'
               }).
+              when('/raffle', {
+                  templateUrl: '/raffle',
+                  controller: 'RaffleCtrl'
+              }).
               otherwise({
                 redirectTo: '/'
               });

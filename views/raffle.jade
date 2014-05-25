@@ -1,0 +1,6 @@
+h1 Raffle time!
+div
+    a.btn.center(ng-click="raffeling=true;raffle()" ng-hide="raffeling") Start
+div
+    div.ticket(ng-repeat="ticket in tickets" class="spin"){{ticket.handle}}
+    div.winner(ng-show="winner") Winner is {{winner}}!

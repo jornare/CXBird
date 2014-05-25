@@ -15,8 +15,8 @@ exports.player = function(req, res){
   res.render('player', {  });
 };
 
-exports.drawing = function(req, res){
-  res.render('drawing', {  });
+exports.raffle = function(req, res){
+  res.render('raffle', {  });
 };
 
 exports.game = function(req, res){

@@ -36,7 +36,7 @@ app.get('/menu', routes.menu);
 app.get('/player', routes.player);
 app.get('/game', routes.game);
 app.get('/highscores', routes.highscores);
-app.get('/drawing', routes.drawing);
+app.get('/raffle', routes.raffle);
 app.get('/users', user.list);
 
 var server = http.createServer(app);

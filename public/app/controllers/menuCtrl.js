@@ -23,6 +23,9 @@
 
                 $scope.$watch('$game.me', function () {
                     $scope.player = $game.me;
+                    if ($scope.player && $scope.player.handle) {
+                        $scope.handleError = null;
+                    }
                 });
 
                 $socket.on('handleInUse', function(data) {

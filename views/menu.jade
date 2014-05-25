@@ -3,7 +3,7 @@ div.menupage
         h1 CXBird
         p Welcome{{player.handle?' ' + player.handle:''}}!
     section(class='login' ng-hide='player.handle')
-        p Please give your username or twitter handle to play.
+        p Please give your email or twitter handle to play.
         div
             input(ng-model='username', ng-change='resetHandleError()')
             button(ng-click='setHandle()')

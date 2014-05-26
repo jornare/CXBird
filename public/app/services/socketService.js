@@ -1,5 +1,5 @@
 ﻿(function(angular, io){
-  var socket = io.connect('http://localhost');
+  var socket = io.connect('http://' + location.host);
 
     angular.module('app')
         .service('$socket', function(){

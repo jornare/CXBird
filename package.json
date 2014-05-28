@@ -1,6 +1,6 @@
 ﻿{
   "name": "CXBird",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "CXBird",
   "main": "app.js",
   "author": {
@@ -8,12 +8,12 @@
     "email": "jah@computas.com"
   },
   "scripts": {
-	"start": "node app.js"
+	"start": "node app.js port=80"
   },
   "dependencies": {
     "express": "3.4.4",
     "jade": "*",
     "stylus": "*",
-    "socket.io": "*"
+    "socket.io": "0.9.x"
   }
 }

@@ -35,6 +35,9 @@
                     watchGame: function () {
                         $socket.emit('watch');
                     },
+                    stopWatchGame: function () {
+                        $socket.emit('stopwatch');
+                    },
                     play: function() {
                         $socket.emit('play', {});
                     },

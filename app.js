@@ -3,18 +3,19 @@
  * Module dependencies.
  */
 
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
-var socketio = require('socket.io');
-var game = require('./lib/game.js');
-var app = express();
+var express = require('express'),
+    routes = require('./routes'),
+    user = require('./routes/user'),
+    http = require('http'),
+    path = require('path'),
+    socketio = require('socket.io'),
+    game = require('./lib/game.js'),
+    app = express(),
+    options = getCommandLineOptions();
 
-
+console.log(options);
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', options.port || process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -50,3 +51,14 @@ server.listen(app.get('port'), function(){
 game.init(io);
 io.sockets.on('connection', game.connect);
 io.set('log level', 1);
+
+function getCommandLineOptions(){
+    var result = {}, i, args;
+    for (i = 0; i < process.argv.length; i++) {
+        keyval = process.argv[i].split('=');
+        if (keyval.length == 2) {
+            result[keyval[0]] = keyval[1];
+        }
+    }
+    return result;
+}

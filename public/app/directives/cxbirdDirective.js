@@ -21,6 +21,11 @@
                         scope.cxbird = new cxbird.Game(canvas.getContext('2d'), scope.game);
                        // new GameObjectManager().startupGameObjectManager();
                         scope.cxbird.start();
+
+                        scope.$on('$destroy', function() {
+                            scope.cxbird.stop();
+                            delete scope.cxbird;
+                        });
                     }
                 };
             });

@@ -24,6 +24,10 @@
         this.timer = setInterval(function () { self.render() }, 0);
     };
 
+    cxbird.Game.prototype.stop = function () {
+        clearInterval(this.timer);
+    };
+
     cxbird.Game.prototype.render = function () {
         var ctx = this.ctx;//.getContext('2d');
         var i, p, pl = this.gameService.players.playing,

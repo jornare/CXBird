@@ -8,9 +8,14 @@
 
             $scope.players = $game.players.playing;
 
-            $socket.on('updatePlayer', function (data) {
-                $scope.players = $game.players.playing;
+            //$socket.on('updatePlayer', function (data) {
+            //    $scope.players = $game.players.playing;
+            //});
+
+            $scope.$on('$destroy', function () {
+                $game.stopWatchGame();
             });
+
         }]);
 
 }(angular));

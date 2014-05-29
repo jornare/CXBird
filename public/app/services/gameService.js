@@ -73,7 +73,7 @@
             }, 10000);
 
             $socket.on('connect', function () {
-                sessionid = $socket.socket.sessionid;
+                sessionid = $socket.io.engine.id;
                 game.players.all.length = 0;
                 game.players.online.length = 0;
                 game.players.playing.length = 0;

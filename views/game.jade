@@ -4,9 +4,9 @@ table.currentplayers
 	tr
 		th Handle
 		th Color
-		th Highscore
+		th High
 		th Score
-	tr(ng-repeat='player in players | unnamedPlayers')
+	tr(ng-repeat="player in players | orderBy:'score':true")
 		td {{player.handle | truncateHandle}}
 		td(style='background-color:{{player.color}}')
 		td.number {{player.highscore}}

@@ -64,7 +64,7 @@
             //cleanup
             setTimeout(function () {
                 var i = 0, p = game.players.playing;
-                for (i = 0; i<p.length; i++) {
+                for (i = 0; i < p.length; i++) {
                     if(!p[i].playing) {
                         game.players.playing.splice(i,1);
                         i--;
@@ -78,12 +78,6 @@
                 game.players.online.length = 0;
                 game.players.playing.length = 0;
                 game.players.count = 0;
-                if (window.localStorage) {
-                    var handle = window.localStorage.handle;
-                    if (handle) {
-                        game.setHandle(handle);
-                    }
-                }
             });
 
             $socket.on('join', function (users) {
@@ -111,6 +105,12 @@
                 if (!game.me) {
                     u = players.all.getById(sessionid);
                     game.me = u;
+                    if (window.localStorage) {
+                        var handle = window.localStorage.handle;
+                        if (handle) {
+                            game.setHandle(handle);
+                        }
+                    }
                     $rootScope.$apply();
                 }
             });

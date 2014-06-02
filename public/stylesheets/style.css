@@ -1,6 +1,5 @@
 html {
   -ms-touch-action: none;
-  -webkit-user-select: none;
 /* Direct all pointer events to JavaScript code. */
 }
 body {

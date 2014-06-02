@@ -67,7 +67,7 @@
             now = Date.now(),
             dt = now - this.time,
             self = this;
-        this.timer = window.requestAnimationFrame(function () { self.render(); });
+        this.timer = window.requestAnimationFrame(function () { setTimeout(function () { self.render(); }, 5); });
 
         this.time = now;
         //this.renderBackground(ctx);

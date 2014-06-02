@@ -2,10 +2,41 @@ html {
   -ms-touch-action: none;
 /* Direct all pointer events to JavaScript code. */
 }
+@font-face {
+  font-family: 'din';
+  src: url("../fonts/dinpro-bold-webfont.eot");
+  src: url("../fonts/dinpro-bold-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/dinpro-bold-webfont.woff") format('woff'), url("../fonts/dinpro-bold-webfont.ttf") format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'din';
+  src: url("../fonts/dinpro-italic-webfont.eot");
+  src: url("../fonts/dinpro-italic-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/dinpro-italic-webfont.woff") format('woff'), url("../fonts/dinpro-italic-webfont.ttf") format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'din';
+  src: url("../fonts/dinpro-webfont.eot");
+  src: url("../fonts/dinpro-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/dinpro-webfont.woff") format('woff'), url("../fonts/dinpro-webfont.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'din';
+  src: url("../fonts/din-light-webfont.eot");
+  src: url("../fonts/din-light-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/din-light-webfont.woff") format('woff'), url("../fonts/din-light-webfont.ttf") format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
 body {
   text-align: center;
-  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 18px 'din', "Lucida Grande", Helvetica, Arial, sans-serif;
   background: #c8e8ea url("../img/bg3.png") top left repeat-x;
+}
+h1 {
+  color: #07466d;
 }
 a {
   color: #00b7ff;
@@ -40,45 +71,80 @@ img.player {
 p.error {
   color: #f00;
 }
-a.btn {
+input.handle-setter {
+  border-radius: 5px;
+  padding: 0 0 5px 7px;
+  display: inline-block;
+  font-family: 'din', arial;
+  font-weight: bold;
+  font-size: 20px;
+  color: #07466d;
+  width: 160px;
+  margin: 0px auto;
+  margin-left: 43px;
+  text-decoration: none;
+  border: 1px solid #a7a7a7;
+}
+button.btn-small {
   text-align: center;
   background: #ececec;
-  border-radius: 15px;
-  padding: 10px 20px;
-  display: block;
-  font-family: arial;
+  border-radius: 10px;
+  padding: 5px 4px 0px 7px;
+  display: inline-block;
+  font-family: 'din', arial;
   font-weight: bold;
   color: #7f7f7f;
   text-decoration: none;
   text-shadow: 0px 1px 0px #fff;
   border: 1px solid #a7a7a7;
+  margin-left: 8px;
+  position: relative;
+  top: 5px;
+  box-shadow: 0px 2px 1px #fff inset, 0px -2px 6px #c4c4c2, 0px 2px 5px rgba(0,0,0,0.1), 0px 8px 10px rgba(0,0,0,0.1);
+  -webkit-transition: box-shadow 0.5s;
+}
+a.btn {
+  text-align: center;
+  background: #ececec;
+  border-radius: 8px;
+  padding: 5px 12px 10px;
+  display: block;
+  font-family: 'din', arial;
+  font-weight: bold;
+  color: #07466d;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #fff;
+  border: 1px solid #a7a7a7;
   width: 145px;
   margin: 0px auto;
-  margin-top: 40px;
-  box-shadow: 0px 2px 1px #fff inset, 0px -2px 8px #fff, 0px 2px 5px rgba(0,0,0,0.1), 0px 8px 10px rgba(0,0,0,0.1);
+  margin-top: 30px;
+  box-shadow: 0px 2px 1px #fff inset, 0px -2px 6px #c4c4c2, 0px 2px 5px rgba(0,0,0,0.1), 0px 8px 10px rgba(0,0,0,0.1);
   -webkit-transition: box-shadow 0.5s;
 }
 a.btn i {
   float: right;
   margin-top: 2px;
 }
-a.btn:hover {
-  box-shadow: 0px 2px 1px #fff inset, 0px -2px 20px #fff, 0px 2px 5px rgba(0,0,0,0.1), 0px 8px 10px rgba(0,0,0,0.1);
+a.btn:hover,
+button.btn-small:hover {
+  box-shadow: 0px 2px 1px #fff inset, 0px -2px 12px #fff, 0px 2px 5px rgba(0,0,0,0.1), 0px 8px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
 }
-a.btn:active {
+a.btn:active,
+button.btn-small:active {
   box-shadow: 0px 1px 2px rgba(0,0,0,0.5) inset, 0px -2px 20px #fff, 0px 1px 5px rgba(0,0,0,0.1), 0px 2px 10px rgba(0,0,0,0.1);
   background: -webkit-linear-gradient(top, #d1d1d1 0%, #ececec 100%);
 }
 a.burger {
-  background: rgba(200,200,255,0.5);
+  background: rgba(250,250,250,0.5);
   border: 1px solid rgba(0,0,0,0.5);
   border-radius: 2px;
-  width: 34px;
+  width: 28px;
   cursor: pointer;
 }
 a.burger div {
-  border: 1px solid #000;
-  height: 3px;
+  border: 1px solid #07466d;
+  height: 2px;
   border-radius: 3px;
   background: #000;
   margin: 3px;
@@ -86,9 +152,13 @@ a.burger div {
 .pull-left {
   float: left;
 }
+section.status {
+  margin-top: 20px;
+}
 .highscores .list {
   display: inline-block;
   margin: 0 auto;
+  margin-left: 100px;
   font-size: 20pt;
 }
 .highscores .list {
@@ -99,11 +169,15 @@ a.burger div {
 }
 .list .col1 {
   width: 80px;
-  float: left;
+  margin: 0px auto;
+  margin-left: 100px;
+  display: inline-block;
+  color: #07466d;
 }
 .list .col2 {
-  width: 380px;
-  float: left;
+  width: 360px;
+  display: inline-block;
+  text-align: left;
 }
 .view-animate-container {
   margin: 15px;
@@ -145,21 +219,25 @@ td.number {
   text-align: right;
 }
 table.currentplayers {
-  margin: 20px;
-  font-family: 'Lucida Console', Monaco, monospace;
+  margin: 0px auto;
+  font-family: 'din', 'Lucida Console', Monaco, monospace;
+  background-color: rgba(250,250,250,0.5);
+  border: 1px solid rgba(250,250,250,0.3);
+  border-radius: 4px;
 }
 table.currentplayers th {
-  background-color: #0090db;
+  color: #07466d;
+}
+table.currentplayers td {
+  font-size: 16px;
 }
 table.currentplayers th,
 table.currentplayers td {
-  padding: 10px;
+  padding: 5px 15px;
 }
-table.currentplayers,
-table.currentplayers th,
-table.currentplayers td {
-  border: 1px solid #19469d;
-  border-collapse: collapse;
+table.currentplayers th:not(:first-child),
+table.currentplayers td:not(:first-child) {
+  border-left: 1px solid rgba(250,250,250,0.3);
 }
 cxbird {
   float: left;

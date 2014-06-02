@@ -1,13 +1,15 @@
 cxbird(width='50%', height='100%', game='game', display='inline-block')
 
-table.currentplayers
-	tr
-		th Handle
-		th Color
-		th High
-		th Score
-	tr(ng-repeat="player in players | orderBy:'score':true")
-		td {{player.handle | truncateHandle}}
-		td(style='background-color:{{player.color}}')
-		td.number {{player.highscore}}
-		td.number {{player.score}}
+section.currentScore
+	h1 Current Players
+	table.currentplayers
+		tr
+			th Color
+			th Player
+			th Points
+			th Best Score
+		tr(ng-repeat="player in players | orderBy:'score':true")
+			td(style='background-color:{{player.color}}')
+			td {{player.handle | truncateHandle}}
+			td.number {{player.score}}
+			td.number {{player.highscore}}

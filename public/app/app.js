@@ -1,6 +1,6 @@
 ﻿(function(angular){
 
-    angular.module('app', ['ngRoute', 'ngAnimate'])
+    angular.module('app', ['ngTouch', 'ngRoute', 'ngAnimate'])
     .config(['$routeProvider',
         function($routeProvider){
             $routeProvider.
@@ -43,5 +43,4 @@
             window.event.returnValue = false;
         });
     }
-
 }(angular));

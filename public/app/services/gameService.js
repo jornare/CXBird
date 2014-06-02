@@ -105,12 +105,12 @@
                 if (!game.me) {
                     u = players.all.getById(sessionid);
                     game.me = u;
-                    if (window.localStorage) {
+                    /*if (window.localStorage) {
                         var handle = window.localStorage.handle;
                         if (handle) {
                             game.setHandle(handle);
                         }
-                    }
+                    }*/
                     $rootScope.$apply();
                 }
             });

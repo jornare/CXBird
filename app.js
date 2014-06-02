@@ -13,13 +13,13 @@ var express = require('express'),
     app = express(),
     options = getCommandLineOptions();
 
-console.log(options);
+//console.log(options);
 // all environments
 app.set('port', options.port || process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
-app.use(express.logger('dev'));
+//app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
@@ -50,7 +50,7 @@ server.listen(app.get('port'), function(){
 
 game.init(io);
 io.sockets.on('connection', game.connect);
-io.set('log level', 1);
+//io.set('log level', 1);
 
 function getCommandLineOptions(){
     var result = {}, i, args;

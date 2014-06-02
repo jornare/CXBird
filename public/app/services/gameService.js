@@ -159,6 +159,7 @@
                     if (u) {
                         u.x = users[i].x;
                         u.y = users[i].y;
+                        u.ys = users[i].ys;
                         u.score = users[i].score;
                         u.life = users[i].life;
                     }

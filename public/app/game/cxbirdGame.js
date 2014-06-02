@@ -1,6 +1,36 @@
 ﻿window.cxbird = window.cxbird || {};
-(function (cxbird) {
-    var playerWidth = 10,//must match server size of player for correct crash-detection
+
+//RequestAnimationFrame polyfill
+(function (window) {
+    var lastTime = 0;
+    var vendors = ['webkit', 'moz'];
+    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+        window.cancelAnimationFrame =
+          window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function (callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function () { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function (id) {
+            clearTimeout(id);
+        };
+}(window));
+
+(function (cxbird, window) {
+    var barSpeed = 0.01,
+        g = 0.00015,
+        floor = 92,
+        playerWidth = 10,//must match server size of player for correct crash-detection
         playerHeight = 10,
         playerRadius = playerWidth / 2,
         playerImg = new Image();
@@ -21,28 +51,46 @@
 
     cxbird.Game.prototype.start = function () {
         var self = this;
-        this.timer = setInterval(function () { self.render() }, 0);
+        this.render();
+        //setInterval(function () { self.render() }, 0);
     };
 
     cxbird.Game.prototype.stop = function () {
-        clearInterval(this.timer);
+        window.cancelAnimationFrame(this.timer);
+        //clearInterval(this.timer);
     };
 
     cxbird.Game.prototype.render = function () {
-        var ctx = this.ctx;//.getContext('2d');
-        var i, p, pl = this.gameService.players.playing,
+        var ctx = this.ctx,//.getContext('2d');
+            i, p, pl = this.gameService.players.playing,
             bars = this.gameService.bars,
-            dt = Date.now() - this.time;
+            now = Date.now(),
+            dt = now - this.time,
+            self = this;
+        this.timer = window.requestAnimationFrame(function () { self.render(); });
+
+        this.time = now;
         //this.renderBackground(ctx);
         this.background.update(dt);
         this.background.draw(ctx);
         for (i = 0; i < pl.length; i++) {
             this.renderPlayer(pl[i], ctx);
+            pl[i].ys += dt * g;
+            pl[i].y += dt * pl[i].ys;
+            pl[i].life += dt;
+            if (pl[i].y < 0) {
+                pl[i].y = 0;
+                pl[i].ys = 0;
+            } else if (pl[i].y > floor - playerHeight) {
+                pl[i].y = floor - playerHeight;
+                pl[i].ys = 0;
+            }
         }
         ctx.globalAlpha = 1;
         ctx.fillStyle = 'red';
         for (i = 0; i < bars.length; i++) {
             this.renderBar(bars[i], ctx);
+            bars[i].x -= dt * barSpeed;
         }
 
     };
@@ -189,4 +237,4 @@
         this.y = 0;
     }
 
-}(window.cxbird));
+}(window.cxbird, window));

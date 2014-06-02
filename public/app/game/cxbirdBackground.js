@@ -26,7 +26,7 @@
     };
 
     cxbird.Background.prototype.update = function (dt) {
-        this.xScroll = 0.08 * dt;
+        this.xScroll += 0.08 * dt;
         this.dt = dt;
     };
 

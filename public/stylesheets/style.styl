@@ -1,5 +1,8 @@
 html 
-  -ms-touch-action: none; /* Direct all pointer events to JavaScript code. */
+  -ms-touch-action: none /* Direct all pointer events to JavaScript code. */
+  touch-action: none
+  -webkit-user-select: none
+  user-select: none
 
 @font-face
   font-family: 'din'
@@ -29,7 +32,6 @@ html
   font-weight: 300;
   font-style: normal
 
-  -webkit-user-select: none;
 body
   text-align:center
   font: 18px 'din', "Lucida Grande", Helvetica, Arial, sans-serif

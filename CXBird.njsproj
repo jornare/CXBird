@@ -39,7 +39,6 @@
     <Compile Include="public\app\directives\cxbirdDirective.js" />
     <Compile Include="public\app\directives\fireworksDirective.js" />
     <Compile Include="public\app\filters\truncateHandle.js" />
-    <Compile Include="public\app\filters\unnamedPlayers.js" />
     <Compile Include="public\app\game\ApplicationManager.js" />
     <Compile Include="public\app\game\cxbirdBackground.js" />
     <Compile Include="public\app\game\cxbirdGame.js" />

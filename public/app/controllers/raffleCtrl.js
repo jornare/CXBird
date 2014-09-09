@@ -65,7 +65,6 @@
                         } else {
                             $timeout(function () {
                                 $scope.winner = $scope.tickets[0].handle;
-								isRaffleRunning = false;
                             },2000);
                             //$scope.tickets.pop();
                            // alert('Winner! is ' + $scope.tickets[0].handle);

@@ -30,6 +30,7 @@
                         playing: [],
                         count: 0,
                     },
+                    theme: 'default',
                     highscores: [],
                     bars: [],
                     watchGame: function () {
@@ -174,6 +175,11 @@
                     for (i = 0; i < data.length; i++) {
                         game.highscores.push(data[i]);
                     }
+                });
+            });
+            $socket.on('theme', function (data) {
+                $rootScope.$apply(function () {
+                    game.theme = data;
                 });
             });
 

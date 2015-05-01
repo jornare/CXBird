@@ -35,7 +35,7 @@ html {
 body {
   text-align: center;
   font: 18px 'din', "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #c8e8ea url("../img/bg3.png") top left repeat-x;
+  background: #c8e8ea url("/theme/bg3.png") top left repeat-x;
 }
 h1 {
   color: #07466d;

@@ -43,7 +43,7 @@
         this.height = ctx.canvas.height;
         this.timer = null;
         this.gameService = gameService;
-        this.background = new cxbird.Background(ctx);
+        this.background = new cxbird.Background(gameService.theme);
         this.xScale = 8.0;
         this.yScale = 6.0;
         this.time = Date.now();

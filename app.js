@@ -26,6 +26,8 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/theme', express.static(path.join(__dirname, 'public/img/themes/' + (options.theme || 'default'))));
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -48,7 +50,7 @@ server.listen(app.get('port'), function(){
 });
 
 
-game.init(io);
+game.init(io, options);
 io.sockets.on('connection', game.connect);
 //io.set('log level', 1);
 

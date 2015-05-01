@@ -24,9 +24,9 @@
     };
 
     //start loading backgrounds, must be after onload event handler
-    bg1Img.src = baseUri + '/theme/bg1.png';
-    bg2Img.src = baseUri + '/theme/bg2.png';
-    bg3Img.src = baseUri + '/theme/bg3.png';
+    bg1Img.src = '/theme/bg1.png';
+    bg2Img.src = '/theme/bg2.png';
+    bg3Img.src = '/theme/bg3.png';
 
     //constructor
     cxbird.Background = function (theme) {

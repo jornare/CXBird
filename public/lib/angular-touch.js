@@ -1,6 +1,6 @@
 /**
- * @license AngularJS v1.3.0-beta.10
- * (c) 2010-2014 Google, Inc. http://angularjs.org
+ * @license AngularJS v1.4.0-rc.1
+ * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
 (function(window, angular, undefined) {'use strict';
@@ -67,11 +67,9 @@ ngTouch.factory('$swipe', [function() {
   };
 
   function getCoordinates(event) {
-    var touches = event.touches && event.touches.length ? event.touches : [event];
-    var e = (event.changedTouches && event.changedTouches[0]) ||
-        (event.originalEvent && event.originalEvent.changedTouches &&
-            event.originalEvent.changedTouches[0]) ||
-        touches[0].originalEvent || touches[0];
+    var originalEvent = event.originalEvent || event;
+    var touches = originalEvent.touches && originalEvent.touches.length ? originalEvent.touches : [originalEvent];
+    var e = (originalEvent.changedTouches && originalEvent.changedTouches[0]) || touches[0];
 
     return {
       x: e.clientX,
@@ -264,7 +262,7 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
   //
   // What happens when the browser then generates a click event?
   // The browser, of course, also detects the tap and fires a click after a delay. This results in
-  // tapping/clicking twice. So we do "clickbusting" to prevent it.
+  // tapping/clicking twice. We do "clickbusting" to prevent it.
   //
   // How does it work?
   // We attach global touchstart and click handlers, that run during the capture (early) phase.
@@ -287,9 +285,9 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
   // encapsulates this ugly logic away from the user.
   //
   // Why not just put click handlers on the element?
-  // We do that too, just to be sure. The problem is that the tap event might have caused the DOM
-  // to change, so that the click fires in the same position but something else is there now. So
-  // the handlers are global and care only about coordinates and not elements.
+  // We do that too, just to be sure. If the tap event caused the DOM to change,
+  // it is possible another element is now in that position. To take account for these possibly
+  // distinct elements, the handlers are global and care only about coordinates.
 
   // Checks if the coordinates are close enough to be within the region.
   function hit(x1, y1, x2, y2) {
@@ -301,7 +299,7 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
   // Splices out the allowable region from the list after it has been used.
   function checkAllowableRegions(touchCoordinates, x, y) {
     for (var i = 0; i < touchCoordinates.length; i += 2) {
-      if (hit(touchCoordinates[i], touchCoordinates[i+1], x, y)) {
+      if (hit(touchCoordinates[i], touchCoordinates[i + 1], x, y)) {
         touchCoordinates.splice(i, i + 2);
         return true; // allowable region
       }
@@ -366,7 +364,7 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
     $timeout(function() {
       // Remove the allowable region.
       for (var i = 0; i < touchCoordinates.length; i += 2) {
-        if (touchCoordinates[i] == x && touchCoordinates[i+1] == y) {
+        if (touchCoordinates[i] == x && touchCoordinates[i + 1] == y) {
           touchCoordinates.splice(i, i + 2);
           return;
         }
@@ -406,7 +404,7 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
       tapping = true;
       tapElement = event.target ? event.target : event.srcElement; // IE uses srcElement.
       // Hack for Safari, which can target text nodes instead of containers.
-      if(tapElement.nodeType == 3) {
+      if (tapElement.nodeType == 3) {
         tapElement = tapElement.parentNode;
       }
 
@@ -414,8 +412,10 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
 
       startTime = Date.now();
 
-      var touches = event.touches && event.touches.length ? event.touches : [event];
-      var e = touches[0].originalEvent || touches[0];
+      // Use jQuery originalEvent
+      var originalEvent = event.originalEvent || event;
+      var touches = originalEvent.touches && originalEvent.touches.length ? originalEvent.touches : [originalEvent];
+      var e = touches[0];
       touchStartX = e.clientX;
       touchStartY = e.clientY;
     });
@@ -431,12 +431,15 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
     element.on('touchend', function(event) {
       var diff = Date.now() - startTime;
 
-      var touches = (event.changedTouches && event.changedTouches.length) ? event.changedTouches :
-          ((event.touches && event.touches.length) ? event.touches : [event]);
-      var e = touches[0].originalEvent || touches[0];
+      // Use jQuery originalEvent
+      var originalEvent = event.originalEvent || event;
+      var touches = (originalEvent.changedTouches && originalEvent.changedTouches.length) ?
+          originalEvent.changedTouches :
+          ((originalEvent.touches && originalEvent.touches.length) ? originalEvent.touches : [originalEvent]);
+      var e = touches[0];
       var x = e.clientX;
       var y = e.clientY;
-      var dist = Math.sqrt( Math.pow(x - touchStartX, 2) + Math.pow(y - touchStartY, 2) );
+      var dist = Math.sqrt(Math.pow(x - touchStartX, 2) + Math.pow(y - touchStartY, 2));
 
       if (tapping && diff < TAP_DURATION && dist < MOVE_TOLERANCE) {
         // Call preventGhostClick so the clickbuster will catch the corresponding click.

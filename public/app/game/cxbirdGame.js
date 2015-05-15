@@ -74,7 +74,7 @@
         this.background.update(dt);
         this.background.draw(ctx);
         for (i = 0; i < pl.length; i++) {
-            this.renderPlayer(pl[i], ctx);
+            this.renderPlayer(pl[i], ctx, dt);
             pl[i].ys += dt * g;
             pl[i].y += dt * pl[i].ys;
             pl[i].life += dt;
@@ -92,11 +92,10 @@
             this.renderBar(bars[i], ctx);
             bars[i].x -= dt * barSpeed;
         }
-
     };
 
 
-    cxbird.Game.prototype.renderPlayer = function (p, ctx) {
+    cxbird.Game.prototype.renderPlayer = function (p, ctx, dt) {
         var x = p.x * this.xScale,
             y = p.y * this.yScale,
             w = playerWidth * this.xScale,
@@ -123,6 +122,15 @@
             ctx.lineWidth = 2;
             ctx.stroke();
             ctx.restore();
+        }
+        if(p.score>1) {
+            if(!p.flame) {
+                p.flame = new cxbird.Flame(x, y, w/2);
+            }
+            p.flame.x = x+w/2;
+            p.flame.y = y+h/2;
+            p.flame.update(dt);
+            p.flame.draw(ctx);
         }
         ctx.drawImage(p.canvas, x, y, w, h);
 

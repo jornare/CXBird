@@ -28,7 +28,7 @@
 					    if(isRaffleRunning) {
 						    return;
 					    }
-                        var tickets = [], extra = [], i, j, p=$game.players.all;
+                        var tickets = [], extra = [], i, j, p = $game.players.all;
                         for (i = 0; i < p.length; i++) {
                             if (!p[i].handle) {
                                 continue;
@@ -38,7 +38,7 @@
                                     tickets.push({ handle: p[i].handle });
                                 }
                             }
-                            tickets.push({ handle: p.handle });
+                            tickets.push({ handle: p[i].handle });
                         }
                         $scope.tickets = tickets.shuffle();
                     });
@@ -55,17 +55,17 @@
                     function raffle(winner) {
                         var i;
                         do {
-                            i = Math.random() * $scope.tickets.length;
+                            i = Math.floor(Math.random() * $scope.tickets.length);
                         } while (i == winner);
                         $scope.tickets.splice(i, 1);
                         if ($scope.tickets.length > 1) {
                             $timeout(function () {
                                 raffle(winner);
-                            },500);
+                            }, 100);
                         } else {
                             $timeout(function () {
                                 $scope.winner = $scope.tickets[0].handle;
-                            },2000);
+                            }, 2000);
                             //$scope.tickets.pop();
                            // alert('Winner! is ' + $scope.tickets[0].handle);
                         }

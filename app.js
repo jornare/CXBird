@@ -15,7 +15,7 @@ var express = require('express'),
 
 //console.log(options);
 // all environments
-app.set('port', options.port || process.env.PORT || 3000);
+app.set('port', options.port || process.env.PORT || 80);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -26,7 +26,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/theme', express.static(path.join(__dirname, 'public/img/themes/' + (options.theme || 'default'))));
+app.use('/theme', express.static(path.join(__dirname, 'public/img/themes/' + (options.theme || 'city'))));
 
 
 // development only
@@ -46,7 +46,7 @@ var server = http.createServer(app);
 var io = socketio.listen(server);
 io.set( 'origins', '*:*' );
 server.listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+	console.log('Express server listening on port ' + app.get('port'));
 });
 
 

@@ -10,7 +10,7 @@ Click the button to fly, avoid the roses to gather points.
 - Connect to our wifi "Computas"
 - Open a web browser on http://192.168.0.2
 - Type your handle, click &gt; and Play
-- Higscore of the day wins a quad core UDOO! tiny pc & dev-board http://udoo.org
+- There are prices to win, see the poster for details
 
 ## Install
 
@@ -27,11 +27,15 @@ npm install
 ```
 Fire it up (you can change port if needed, on Windows port 80 often conflicts with a web server or Skype)
 ```
-node app.js port=80
+node app.js
+```
+optionally with another port or theme
+```
+node app.js port=3000 theme=city
 ```
 
 ## Raffle / draw a winner
-Every user with more than 2 points enter the raffle with 1 ticket
+Every user with more than 1 point enter the raffle with 1 ticket
 Top 10 gets extra tickets according to their rank. No 10 gets 1 extra ticket, No 9 2 extra and so forth.
 
 In the browser window, navigate to http://192.168.0.2/#/raffle
